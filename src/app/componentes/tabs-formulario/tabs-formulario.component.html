@@ -1,0 +1,28 @@
+<div class="container">
+  <mat-card>
+    <mat-toolbar color="primary">{{title}}</mat-toolbar>
+      <mat-card-content *ngIf="urlMembro">
+        <form [formGroup]="formulario">
+          <!--Cadastro Membro -->
+          <mat-tab-group>
+            <mat-tab label="Cadastro">
+              <app-membros-formulario></app-membros-formulario>
+            </mat-tab>
+
+            <mat-tab label="Endereco">
+              <div>
+                <app-cadastro-endereco (receberEndereco)="receberEndereco($event)"></app-cadastro-endereco>
+              </div>
+            </mat-tab>
+
+            <mat-tab label="Igreja">
+              <div>
+                <app-cadastro-igreja></app-cadastro-igreja>
+              </div>
+            </mat-tab>
+
+          </mat-tab-group>
+        </form>
+      </mat-card-content>
+  </mat-card>
+  </div>

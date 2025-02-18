@@ -1,0 +1,108 @@
+<div class="grid-container">
+   <!--Mini Cards-->
+    <mat-grid-list cols="{{ ( cardLayout | async )?.columns }}" rowHeight="120px">
+
+
+        <!--Mini Cards Membros-->
+        <mat-grid-tile  [colspan]="( cardLayout | async )?.miniCard?.cols"
+        [rowspan]="( cardLayout | async )?.miniCard?.rows"
+        >
+        <app-card>
+          <div>
+            <app-mini-card [tituloCard]="'Membros na Regional'" [numberTotalMembros]="totalMembros" >
+
+            </app-mini-card>
+          </div>
+        </app-card>
+      </mat-grid-tile>
+
+
+         <!--Mini Cards Homens-->
+      <mat-grid-tile  [colspan]="( cardLayout | async )?.miniCard?.cols"
+      [rowspan]="( cardLayout | async )?.miniCard?.rows"
+      >
+      <app-card>
+        <div>
+          <app-mini-card [tituloCard]="'Homens na Regional'" [numberHomens]="homensMembros" >
+
+          </app-mini-card>
+        </div>
+      </app-card>
+    </mat-grid-tile>
+
+    <!--Mini Cards Mulheres-->
+    <mat-grid-tile  [colspan]="( cardLayout | async )?.miniCard?.cols"
+      [rowspan]="( cardLayout | async )?.miniCard?.rows"
+      >
+      <app-card>
+        <div>
+          <app-mini-card [tituloCard]="'Mulheres na Regional'" [numberMulheres]="mulheresMembros" >
+
+          </app-mini-card>
+        </div>
+      </app-card>
+      </mat-grid-tile>
+
+       <!--Mini Cards Igrejas-->
+    <mat-grid-tile  [colspan]="( cardLayout | async )?.miniCard?.cols"
+    [rowspan]="( cardLayout | async )?.miniCard?.rows"
+    >
+    <app-card>
+      <div>
+        <app-mini-card [tituloCard]="'Total Igrejas na Regional'" [numberTotalIgrejas]="totalIgrejas" >
+        </app-mini-card>
+      </div>
+    </app-card>
+    </mat-grid-tile>
+
+
+      <!--Charts Setores-->
+   <mat-grid-tile  [colspan]="( cardLayout | async )?.chart?.cols"
+   [rowspan]="( cardLayout | async )?.chart?.rows">
+   <app-card><div>
+    <apx-chart
+    [series]="chartOptions?.series"
+    [chart]="chartOptions?.chart"
+    [title]="chartOptions?.title"
+    [xaxis]="chartOptions?.xaxis"
+    [yaxis]="chartOptions?.yaxis"
+    [plotOptions]="chartOptions?.plotOptions"
+    [tooltip]="chartOptions?.tooltip"
+    >
+    </apx-chart>
+  </div></app-card>
+ </mat-grid-tile>
+
+
+   <!--Charts Congregacoes-->
+ <mat-grid-tile  [colspan]="( cardLayout | async )?.chart?.cols"
+   [rowspan]="( cardLayout | async )?.chart?.rows">
+   <app-card>
+    <div>
+    <apx-chart
+    [series]="chartOptionsCongregacoes?.series"
+    [chart]="chartOptionsCongregacoes?.chart"
+    [title]="chartOptionsCongregacoes?.title"
+    [xaxis]="chartOptionsCongregacoes?.xaxis"
+    [yaxis]="chartOptionsCongregacoes?.yaxis"
+    [plotOptions]="chartOptionsCongregacoes?.plotOptions"
+    [tooltip]="chartOptionsCongregacoes?.tooltip"
+    >
+    </apx-chart>
+  </div></app-card>
+ </mat-grid-tile>
+
+
+
+ <!--Table-->
+ <mat-grid-tile [colspan]="( cardLayout | async )?.table?.cols" [rowspan]="( cardLayout | async )?.table?.rows">
+  <app-card title="Card 9">
+    <div>
+    <mat-toolbar color="primary"><span> Lista de Aniversariantes</span></mat-toolbar>
+    <app-table-birthday>
+    </app-table-birthday>
+  </div>
+</app-card>
+</mat-grid-tile>
+    </mat-grid-list>
+</div>

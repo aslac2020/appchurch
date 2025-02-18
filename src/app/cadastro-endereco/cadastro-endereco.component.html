@@ -1,0 +1,43 @@
+<div>
+    <form [formGroup]="formulario">
+      <div class="container-cep">
+      <mat-form-field appearance="outline" style="width: 60%;margin-top: 20px;">
+          <mat-label>Cep</mat-label>
+          <input matInput formControlName="cep" placeholder="Ex. Mia" name="cep">
+      </mat-form-field>
+        <button mat-raised-button color="primary" (click)="buscarCep()"><mat-icon class="mat-18" (click)=buscarCep()>search</mat-icon>Buscar</button>
+    </div>
+      <div class="container-info">
+        <mat-form-field appearance="outline" style="width: 50%; margin-right: 20px;">
+          <mat-label>Logradouro</mat-label>
+          <input matInput formControlName="logradouro">
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 30%;">
+          <mat-label>Numero</mat-label>
+          <input matInput formControlName="numero">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline" style="width: 50%; margin-right: 20px;">
+          <mat-label>Complemento</mat-label>
+          <input matInput formControlName="complemento">
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 30%;">
+          <mat-label>Bairro</mat-label>
+          <input matInput formControlName="bairro">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline" style="width: 50%; margin-right: 20px;">
+          <mat-label>Cidade</mat-label>
+          <input matInput formControlName="cidade">
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 30%;">
+          <mat-label>Estado</mat-label>
+          <input matInput formControlName="estado">
+        </mat-form-field>
+      </div>
+
+    </form>
+
+</div>

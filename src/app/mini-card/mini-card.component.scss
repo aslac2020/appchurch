@@ -1,0 +1,110 @@
+
+.card-membros{
+  div{
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+
+    h3 {
+      color: #24cf60;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    mat-icon {
+      font-size: 40px !important;
+      color: #24cf60;
+    }
+  }
+  .info-membros {
+    color: #24cf60;
+    font-size: 20px;
+    font-weight: bold;
+
+    margin-top: -15px;
+    margin-right: 100px;
+  }
+}
+
+.card-membro-masculino{
+  div{
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+
+    h3 {
+      color: #4765e8;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    mat-icon {
+      font-size: 40px !important;
+      color: #4765e8;
+    }
+  }
+  .info-membro-masculino {
+    color: #4765e8;
+    font-size: 20px;
+    font-weight: bold;
+
+    margin-top: -15px;
+    margin-right: 100px;
+  }
+}
+
+.card-membro-feminino{
+  div{
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+
+    h3 {
+      color: #f54ce4;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    mat-icon {
+      font-size: 40px !important;
+      color: #f54ce4;;
+    }
+  }
+  .info-membro-feminino {
+    color: #f54ce4;
+    font-size: 20px;
+    font-weight: bold;
+
+    margin-top: -15px;
+    margin-right: 100px;
+  }
+}
+
+.card-igrejas{
+  div{
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+
+    h3 {
+      color: #393739;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    mat-icon {
+      font-size: 40px !important;
+      color: #393739;
+    }
+  }
+  .info-igrejas {
+    color: #393739;
+    font-size: 20px;
+    font-weight: bold;
+
+    margin-top: -15px;
+    margin-right: 100px;
+  }
+}
+
+

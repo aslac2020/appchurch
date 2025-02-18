@@ -1,0 +1,35 @@
+<div class="container" >
+
+  <div class="card-membros" *ngIf="numberTotalMembros">
+    <div>
+      <mat-icon>wc</mat-icon>
+      <h3>{{tituloCard}}</h3>
+    </div>
+    <h3 class="info-membros">{{numberTotalMembros}}</h3>
+  </div>
+
+  <div class="card-membro-masculino" *ngIf="numberHomens">
+    <div>
+      <mat-icon>man</mat-icon>
+      <h3>{{tituloCard}}</h3>
+    </div>
+    <h3 class="info-membro-masculino">{{numberHomens}}</h3>
+  </div>
+
+  <div class="card-membro-feminino" *ngIf="numberMulheres">
+    <div>
+      <mat-icon>woman</mat-icon>
+      <h3>{{tituloCard}}</h3>
+    </div>
+    <h3 class="info-membro-feminino">{{numberMulheres}}</h3>
+  </div>
+
+  <div class="card-igrejas" *ngIf="numberTotalIgrejas">
+    <div>
+      <mat-icon>church</mat-icon>
+      <h3>{{tituloCard}}</h3>
+    </div>
+    <h3 class="info-igrejas">{{numberTotalIgrejas}}</h3>
+  </div>
+
+</div>

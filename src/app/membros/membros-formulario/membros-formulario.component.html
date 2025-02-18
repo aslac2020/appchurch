@@ -1,0 +1,52 @@
+<div>
+  <mat-form-field appearance="outline" style="width: 100%;margin-top: 20px;">
+    <mat-label>Nome Completo</mat-label>
+    <input matInput formControlName="nome" placeholder="Ex. Mia" name="nome">
+  </mat-form-field>
+</div>
+<div class="container-info">
+    <!--Email -->
+  <mat-form-field appearance="outline" style="width: 50%;">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" placeholder="teste@teste.com">
+    </mat-form-field>
+
+       <!--CPF -->
+    <mat-form-field appearance="outline" style="width: 50%;">
+      <mat-label>CPF</mat-label>
+      <input matInput formControlName="cpf" placeholder="000.000.000-00">
+      </mat-form-field>
+</div>
+<div class="container-info">
+    <!--Estado Civil -->
+  <mat-form-field appearance="outline" style="width: 50%;">
+    <mat-label>Estado Civil</mat-label>
+    <input matInput formControlName="estadoCivil">
+    </mat-form-field>
+
+    <!--Data Nascimento -->
+    <mat-form-field appearance="fill" style="width: 50%;">
+      <mat-label>Data Nascimento</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+</div>
+
+<div class="container-info">
+  <!--Telefone -->
+<mat-form-field appearance="outline" style="width: 50%;">
+  <mat-label>Telefone</mat-label>
+  <input matInput formControlName="telefone">
+  </mat-form-field>
+
+  <!--Sexo -->
+  <mat-form-field appearance="outline" style="width: 50%;">
+    <mat-label>Sexo</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="food">
+      <mat-option *ngFor="let sexo of sexos" [value]="sexo.value">
+        {{sexo.viewValue}}
+      </mat-option>
+      </mat-select>
+    </mat-form-field>
+</div>
