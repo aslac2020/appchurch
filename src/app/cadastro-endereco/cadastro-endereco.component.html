@@ -3,9 +3,9 @@
       <div class="container-cep">
       <mat-form-field appearance="outline" style="width: 60%;margin-top: 20px;">
           <mat-label>Cep</mat-label>
-          <input matInput formControlName="cep" placeholder="Ex. Mia" name="cep">
+          <input maxlength="8" matInput formControlName="cep" placeholder="Ex. Mia" name="cep">
       </mat-form-field>
-        <button mat-raised-button color="primary" (click)="buscarCep()"><mat-icon class="mat-18" (click)=buscarCep()>search</mat-icon>Buscar</button>
+        <button mat-raised-button [disabled]="this.formulario.get('cep')?.value.length < 8" color="primary" (click)="buscarCep()"><mat-icon class="mat-18" (click)=buscarCep()>search</mat-icon>Buscar</button>
     </div>
       <div class="container-info">
         <mat-form-field appearance="outline" style="width: 50%; margin-right: 20px;">

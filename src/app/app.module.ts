@@ -35,7 +35,9 @@ import { CommonModule } from '@angular/common';
 import { CadastroEnderecoComponent } from './cadastro-endereco/cadastro-endereco.component';
 import { TabsFormularioComponent } from './componentes/tabs-formulario/tabs-formulario.component';
 import { CadastroIgrejaComponent } from './cadastro-igreja/cadastro-igreja.component';
-
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatRadioModule} from '@angular/material/radio';
+import {  NgxMaskModule} from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -74,9 +76,12 @@ import { CadastroIgrejaComponent } from './cadastro-igreja/cadastro-igreja.compo
     MatFormFieldModule,
     MatSelectModule,
     MatTabsModule,
+    MatExpansionModule,
+    MatRadioModule,
     FormsModule,
     ReactiveFormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

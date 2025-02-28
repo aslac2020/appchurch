@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Cep } from 'src/app/model/Endereco';
 import { Membros } from 'src/app/model/Membros';
 import { MembrosFormularioComponent } from "../../membros/membros-formulario/membros-formulario.component";
+import { IgrejasRegional } from 'src/app/model/IgrejasRegionais';
 
 @Component({
   selector: 'app-tabs-formulario',
@@ -15,6 +16,7 @@ export class TabsFormularioComponent implements OnInit {
   formulario: FormGroup | any;
   formularioEnderecoMembro: Cep | any;
   formularioMembro: Membros | any;
+  formularioIgrejaMembroRegional: IgrejasRegional | any;
   urlMembro: boolean | any;
 
   constructor(
@@ -25,7 +27,7 @@ export class TabsFormularioComponent implements OnInit {
 
   ngOnInit(): void {
     this.setarTitulosEvalidacoes();
-    this.iniciarFormularioMembro();
+     this.iniciarFormularioMembro();
     this.iniciarFormularioEndereco();
     this.iniciarFormularioIgrejaMembro();
   }
@@ -59,28 +61,29 @@ export class TabsFormularioComponent implements OnInit {
   iniciarFormularioIgrejaMembro() {
     this.formulario = this.fb.group({
       nome: [''],
-      cnpj: [''],
       telefone: [''],
       email: [''],
-      cep: [''],
-      logradouro: [''],
-      complemento: [''],
-      bairro: [''],
-      cidade: [''],
-      estado: [''],
-      localidade: [''],
-      numero: ['']
+      valorAluguel: [''],
+      dataPagamentoAluguel: [''],
+      aluguel: ['']
     });
   }
 
   receberTituloCard(titulo: string | any) {
     this.title = titulo;
-    console.log(this.title);
   }
 
   receberEndereco(endereco: Cep | any) {
       this.formularioEnderecoMembro = endereco;
   }
+
+  receberDadosIgrejaRegional(igrejaRegional: IgrejasRegional | any) {
+    this.formularioIgrejaMembroRegional = igrejaRegional;
+  }
+
+
+
+
 
   setarTitulosEvalidacoes(){
     this.urlMembro = this.router.url.includes('membros/cadastro');

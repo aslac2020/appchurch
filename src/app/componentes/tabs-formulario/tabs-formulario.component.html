@@ -1,6 +1,6 @@
 <div class="container">
   <mat-card>
-    <mat-toolbar color="primary">{{title}}</mat-toolbar>
+    <mat-toolbar style="background-color: #e5e5e5;">{{title}}</mat-toolbar>
       <mat-card-content *ngIf="urlMembro">
         <form [formGroup]="formulario">
           <!--Cadastro Membro -->
@@ -17,7 +17,7 @@
 
             <mat-tab label="Igreja">
               <div>
-                <app-cadastro-igreja></app-cadastro-igreja>
+                <app-cadastro-igreja ></app-cadastro-igreja>
               </div>
             </mat-tab>
 

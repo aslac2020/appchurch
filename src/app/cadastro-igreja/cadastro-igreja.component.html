@@ -1,27 +1,26 @@
 <div>
 
   <div class="container-escolha">
-    <mat-card-title style="margin-top: 20px; margin-bottom: 20px;">Membro Congrega:</mat-card-title>
-      <div class="container-igrejaRegional">
-        <mat-card style="width: 33%;">
-          <mat-card-content style="display: flex;flex-direction: column;">
-            <button style="background-color: transparent; border-color: transparent;cursor: pointer;">
+      <div class="container-igrejaRegional" style="margin-top: 20px;">
+        <mat-card style="width: 33%;" [ngClass]="{'selected-card': isSelectedCard && congregaRegional}">
+          <mat-card-content style="display: flex;flex-direction: column;" >
+            <button (click)="carregarDadosIgrejaRegional()" style="background-color: transparent; border-color: transparent;cursor: pointer;">
               <img src="assets/images/igreja.png" alt="" width="50px">
             </button>
             <mat-label style="display: flex;justify-content: center;">Igreja Regional</mat-label>
           </mat-card-content>
         </mat-card>
-        <mat-card style="width: 33%;">
+        <mat-card style="width: 33%;" [ngClass]="{'selected-card': isSelectedCard && congregaSetor}">
           <mat-card-content style="display: flex;flex-direction: column;">
-            <button style="background-color: transparent; border-color: transparent;cursor: pointer;">
+            <button style="background-color: transparent; border-color: transparent;cursor: pointer;" (click)="buscarSetores()">
               <img src="assets/images/igreja.png" alt="" width="50px">
             </button>
             <mat-label style="display: flex;justify-content: center;">Igreja Setorial</mat-label>
           </mat-card-content>
         </mat-card>
-        <mat-card style="width: 33%;">
+        <mat-card style="width: 33%;" [ngClass]="{'selected-card': isSelectedCard && congregaCongregacao}">
           <mat-card-content style="display: flex;flex-direction: column;">
-            <button style="background-color: transparent; border-color: transparent;cursor: pointer;">
+            <button style="background-color: transparent; border-color: transparent;cursor: pointer;" (click)="buscarCongregacoes()">
               <img src="assets/images/igreja.png" alt="" width="50px">
             </button>
             <mat-label style="display: flex;justify-content: center;">Igreja Congregação</mat-label>
@@ -30,12 +29,158 @@
       </div>
 
     <form [formGroup]="formulario">
-      <div class="container-cep">
-        <mat-form-field appearance="outline" style="width: 60%;margin-top: 20px;">
-            <mat-label>Nome</mat-label>
-            <input matInput formControlName="nome" placeholder="Ex. Mia" name="nome">
-        </mat-form-field>
-      </div>
+      <mat-accordion class="example-headers-align" multi>
+        <mat-expansion-panel  style="margin-top: 30px;">
+          <mat-expansion-panel-header style="background-color: bisque;">
+            <mat-panel-title>
+              Dados da Igreja
+            </mat-panel-title>
+            <mat-panel-description>
+              Igreja onde o membro congrega
+              <mat-icon>church</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+
+             <!--Setores-->
+             <div class="container-igreja" style="margin-top: 20px;" *ngIf="congregaSetor || congregaCongregacao">
+              <mat-form-field appearance="outline" style="margin-top: 20px; width: 100%;">
+                <mat-label>Selecione o Setor</mat-label >
+            <mat-select  placeholder="Setor" (selectionChange)="selecionadoSetor($event.value)" formControlName="idIgrejaSetor">
+                <mat-option *ngFor="let setores of setoresRegional" [value]="setores?.idIgrejaSetor">{{setores?.nome}}</mat-option>
+            </mat-select>
+              </mat-form-field>
+            </div>
+
+
+
+             <!--Congregacoes -->
+             <div class="container-igreja" style="margin-top: 20px;" *ngIf="congregaCongregacao">
+              <mat-form-field appearance="outline" style="margin-top: 20px; width: 100%;">
+                <mat-label>Selecione a congregação</mat-label >
+            <mat-select  placeholder="Setor" (selectionChange)="selecionadoSetor($event.value)" formControlName="idIgrejaSetor">
+                <mat-option *ngFor="let setores of setoresRegional" [value]="setores?.idIgrejaSetor">{{setores?.nome}}</mat-option>
+            </mat-select>
+              </mat-form-field>
+            </div>
+
+
+         <!-- Nome Igreja -->
+          <div class="container-igreja">
+            <mat-form-field appearance="outline" style="margin-top: 20px; width: 100%;">
+              <mat-label>Nome Igreja</mat-label>
+              <input matInput formControlName="nome" placeholder="Nome da Igreja">
+            </mat-form-field>
+          </div>
+
+          <!-- Email -->
+          <div>
+            <mat-form-field appearance="outline" style="width: 90%;">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" placeholder="Email da Igreja">
+            </mat-form-field>
+          </div>
+
+          <!--Telefone -->
+          <div style="display: flex; width: 100%; gap: 30px;">
+            <mat-form-field appearance="outline" style="width: 70%;">
+              <mat-label>Telefone</mat-label>
+              <input matInput formControlName="telefone" placeholder="Telefone da Igreja">
+            </mat-form-field>
+
+            <!--Paga Aluguel -->
+            <div style="display: flex; flex-direction: column;">
+              <label id="example-radio-group-label">Igreja Paga Aluguel</label>
+              <mat-radio-group aria-label="Aluguel" style="margin-top: 10px;" formControlName="aluguel">
+                <mat-radio-button [value]="true">Sim</mat-radio-button>
+                <mat-radio-button [value]="false">Não</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+           <!--Valor do Aluguel -->
+          <div style="display: flex; width: 100%; gap: 30px;" *ngIf="formulario.get('aluguel')?.value || formulario.get('dataPagamentoAluguel')?.value">
+            <mat-form-field appearance="outline" style="width: 50%;">
+              <mat-label>Valor do Aluguel</mat-label>
+              <input type="number" matInput formControlName="valorAluguel" mask="0*.00" thousandSeparator=".">
+            </mat-form-field>
+
+            <!--Data Pagamento Aluguel -->
+            <mat-form-field appearance="fill" style="width: 50%;">
+              <mat-label>Data Pagamento</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="dataPagamentoAluguel">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+
+          <!--Endereço -->
+          <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header style="background-color: bisque;">
+                <mat-panel-title>
+                  Endereço
+                </mat-panel-title>
+                <mat-panel-description>
+                  Endereço da Igreja
+                  <mat-icon>location_on</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+
+               <!--Cidade -->
+               <div class="container-igreja">
+                <mat-form-field appearance="outline" style="margin-top: 10px; width: 100%;">
+                  <mat-label>Cep</mat-label>
+                  <input matInput formControlName="cep" placeholder="Cep">
+                </mat-form-field>
+              </div>
+
+
+               <!--Rua -->
+               <div class="container-igreja" style="display: flex;">
+                <mat-form-field appearance="outline" style="margin-top: 10px; width: 100%;">
+                  <mat-label>Rua</mat-label>
+                  <input matInput formControlName="rua" placeholder="Rua">
+                </mat-form-field>
+
+              <!--Numero -->
+                <mat-form-field appearance="outline" style="margin-top: 10px; width: 100%;">
+                  <mat-label>Numero</mat-label>
+                  <input matInput formControlName="numero" placeholder="Numero">
+                </mat-form-field>
+              </div>
+
+
+              <!--Bairro -->
+              <div class="container-igreja">
+                <mat-form-field appearance="outline" style="margin-top: 10px; width: 100%;">
+                <mat-label>Bairro</mat-label>
+                <input matInput formControlName="bairro" placeholder="Bairro">
+                </mat-form-field>
+              </div>
+
+
+              <!--Cidade -->
+              <div class="container-igreja">
+                <mat-form-field appearance="outline" style="margin-top: 10px; width: 100%;">
+                  <mat-label>Cidade</mat-label>
+                  <input matInput formControlName="cidade" placeholder="Cidade">
+                </mat-form-field>
+              </div>
+
+                <!--Estado -->
+                <div class="container-igreja">
+                  <mat-form-field appearance="outline" style="margin-top: 10px; width: 100%;">
+                    <mat-label>Estado</mat-label>
+                    <input matInput formControlName="estado" placeholder="Estado">
+                  </mat-form-field>
+                </div>
+
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-expansion-panel>
+      </mat-accordion>
     </form>
   </div>
 </div>

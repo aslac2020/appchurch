@@ -27,7 +27,7 @@
     <!--Data Nascimento -->
     <mat-form-field appearance="fill" style="width: 50%;">
       <mat-label>Data Nascimento</mat-label>
-      <input matInput [matDatepicker]="picker">
+      <input matInput [matDatepicker]="picker" formControlName="dataNascimento">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>

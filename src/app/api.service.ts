@@ -13,6 +13,10 @@ export class ApiService {
     return this.httpClient.get(`${environment.apiUrl}/Igrejas`);
   }
 
+  getChurchById(id: number | any){
+    return this.httpClient.get(`${environment.apiUrl}/Igrejas/${id}`);
+  }
+
   getAllMembers(){
     return this.httpClient.get(`${environment.apiUrl}/Membros`);
   }
@@ -20,13 +24,16 @@ export class ApiService {
     return this.httpClient.get(`${environment.apiUrl}/Membros/${id}`);
   }
 
-
   getAllMembersBirthdays(){
     return this.httpClient.get(`${environment.apiUrl}/Membros/aniversariantes`);
   }
 
   getAllChurchSetors(){
     return this.httpClient.get(`${environment.apiUrl}/IgrejasSetores`);
+  }
+
+  getChurchSetorById(id: number | any){
+    return this.httpClient.get(`${environment.apiUrl}/IgrejasSetores/${id}`);
   }
 
   getAllCongregacoes(){
